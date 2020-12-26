@@ -2,6 +2,7 @@
 #include<iostream>
 #include <sstream>
 #include <string>
+#include <windows.h>
 using namespace std;
 GLint headx =300,heady = 100, legLeft = 0, hig = 40;
 GLint footx = headx + 10;
@@ -42,7 +43,6 @@ void draw_down()
     glVertex2f(footx+ldis,0);
     glVertex2f(footx+ldis,heady-hig);
     glEnd();
-
 }
 void draw_danger()
 {
@@ -105,6 +105,12 @@ void draw_robo()
 {
     draw_head();
     draw_down();
+}
+string int_to_string(int i)
+{
+stringstream ss;
+ss<<i;
+return ss.str();
 }
 
 //void move_food()
@@ -184,11 +190,17 @@ void timer(int){
         if((dx[0] >= headx && dx[0] < headx+dis) && dy[0] == heady)
         {
             cout<<name<<"Your Final score is "<<score<<endl;
+            string s = int_to_string(score);
+            const char* ptr = s.c_str();
+            MessageBox(NULL,ptr,"score",MB_OK);
             exit(0);
         }
         if((dx[1] >= headx && dx[1] < headx+dis) && dy[1] == heady)
         {
             cout<<name<<"Your Final score is "<<score<<endl;
+            string s = int_to_string(score);
+            const char* ptr = s.c_str();
+           MessageBox(NULL,ptr,"score",MB_OK);
             exit(0);
         }
     }
@@ -248,7 +260,7 @@ int main(int argc,char * argv[])
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowPosition(0,0);
     glutInitWindowSize(800,800);
-    glutCreateWindow("Robo Max");
+    glutCreateWindow("BB-ATE");
     init();
     glutDisplayFunc(display);
     glutKeyboardFunc(key);
@@ -256,3 +268,4 @@ int main(int argc,char * argv[])
     glutMainLoop();
     return 0;
 }
+
