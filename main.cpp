@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <windows.h>
+#include <bits/stdc++.h>
 using namespace std;
 GLint headx =300,heady = 100, legLeft = 0, hig = 40;
 GLint footx = headx + 10;
@@ -206,16 +207,18 @@ void timer(int){
         }
     }
 }
-void renderBitmapString(float x, float y, void *font,const char *string){
-    const char *c;
-    glRasterPos2f(x, y);
-    for (c=string; *c != '\0'; c++) {
-        glutBitmapCharacter(font, *c);
+
+void renderBitmapString(float x, float y, void * font, string s){
+    glRasterPos2f(x,y);
+    for(int i = 0;i<s.length();i++){
+        glutBitmapCharacter(font, s[i]);
     }
+
 }
+
 void display()
 {
-    glClearColor(0,1,0,1);
+    glClearColor(0.2,0.4,0.3,1);
     glClear(GL_COLOR_BUFFER_BIT);
     draw_robo();
     draw_food();
@@ -223,8 +226,7 @@ void display()
     glColor3f(1,1,1);
     ostringstream ss;
     renderBitmapString(10,10,(void *)font,"Hey! this game was developed by Mohammed Rayan Sailani 18GAEM9050");
-    renderBitmapString(320,670,(void *)font,"Always eat the blocks and dodge the triangles!");
-    renderBitmapString(320,670,(void *)font,"Always eat the blocks and dodge the triangles!");
+    renderBitmapString(675,680,(void *)font,int_to_string(score));
     glutSwapBuffers();
 }
 
