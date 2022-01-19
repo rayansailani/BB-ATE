@@ -108,9 +108,9 @@ void draw_robo()
 }
 string int_to_string(int i)
 {
-stringstream ss;
-ss<<i;
-return ss.str();
+    stringstream ss;
+    ss<<i;
+    return ss.str();
 }
 
 //void move_food()
@@ -163,6 +163,7 @@ void timer(int){
             int ran = rand();
             ran = ran%680;
             foodx[4]= ran;
+            foodx[4]= ran;
             score+=4;
     }
 
@@ -214,16 +215,19 @@ void renderBitmapString(float x, float y, void *font,const char *string){
 }
 void display()
 {
+    glClearColor(0,1,0,1);
     glClear(GL_COLOR_BUFFER_BIT);
     draw_robo();
     draw_food();
     draw_danger();
     glColor3f(1,1,1);
     ostringstream ss;
-    renderBitmapString(10,10,(void *)font,"Hey! this game was developed by Mohammed Rayan Sailani ");
+    renderBitmapString(10,10,(void *)font,"Hey! this game was developed by Mohammed Rayan Sailani 18GAEM9050");
+    renderBitmapString(320,670,(void *)font,"Always eat the blocks and dodge the triangles!");
     renderBitmapString(320,670,(void *)font,"Always eat the blocks and dodge the triangles!");
     glutSwapBuffers();
 }
+
 void key(unsigned char ch, int x ,int y)
 {
     switch(ch)
@@ -268,4 +272,3 @@ int main(int argc,char * argv[])
     glutMainLoop();
     return 0;
 }
-
